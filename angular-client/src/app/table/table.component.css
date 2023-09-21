@@ -1,0 +1,25 @@
+.table {
+    border: 1px black solid;
+    text-align: center;
+    margin: auto;
+}
+
+.thead {
+    border: 1px black solid;
+}
+
+.tbody {
+    border: 1px black solid;
+}
+
+.tr {
+    border: 1px black solid;
+}
+
+.th {
+    border: 1px black solid;
+}
+
+.td {
+    border: 1px black solid;
+}
