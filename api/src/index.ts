@@ -1,6 +1,7 @@
 import express, { Request, Response, NextFunction } from "express"
 import cors from "cors"
 import { productsRouter } from "./products/routes";
+import { categoriesRouter } from "./categories/routes";
 
 const app = express();
 app.use(cors())
@@ -13,6 +14,7 @@ app.get("/health-check", function (req, res, next) {
 
 
 app.use("/products", productsRouter)
+app.use("/categories", categoriesRouter)
 
 
 

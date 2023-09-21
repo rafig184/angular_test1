@@ -1,3 +1,25 @@
+<div class="form">
+    <div class="insideForm">
+        <div class="inlineDiv">
+            <label>Product Name :</label>
+            <input [(ngModel)]="productName" matInput placeholder="Add a Product">
+        </div>
+        <div class="inlineDiv">
+            <label>Price :</label>
+            <input type="number" [(ngModel)]="price" matInput placeholder="Select a Price">
+        </div>
+        <div class="inlineDiv">
+            <label>Category :</label>
+            <select [(ngModel)]="selectedCategory" placeholder="Search for a product">
+                <option *ngFor="let category of categories">{{category.categoryName}}</option>
+            </select>
+        </div>
+        <div class="btn">
+            <button (click)="addProducts()" mat-flat-button color="primary">Add Product</button>
+        </div>
+    </div>
+</div>
+
 <table class="table">
     <thead class="thead">
         <tr class="tr">
