@@ -18,26 +18,26 @@ productsRouter.get("/", async function (req: Request, res: Response, next: NextF
     }
 })
 
-// export const newProductSchema = zod.object({
-//     productName: zod.string(),
-//     price: zod.number(),
-//     categoryName: zod.string(),
-// })
-// console.log(`####################3##${newProductSchema}`);
+export const newProductSchema = zod.object({
+    productName: zod.string(),
+    price: zod.number(),
+    categoryName: zod.string(),
+})
+console.log(`####################3##${newProductSchema}`);
 
-// function middlewareNewProduct(req: Request, res: Response, next: NextFunction) {
-//     try {
-//         newProductSchema.parse(req.body)
+function middlewareNewProduct(req: Request, res: Response, next: NextFunction) {
+    try {
+        newProductSchema.parse(req.body)
 
 
-//         return next()
-//     } catch (error) {
-//         console.log(error)
-//         return res.status(400).send(error)
-//     }
-// }
+        return next()
+    } catch (error) {
+        console.log(error)
+        return res.status(400).send(error)
+    }
+}
 
-productsRouter.post("/new-product", async function (req: Request, res: Response, next: NextFunction) {
+productsRouter.post("/new-product", middlewareNewProduct, async function (req: Request, res: Response, next: NextFunction) {
     try {
         const { productName, price, categoryName } = req.body
         console.log(`${productName}=>${price} => ${categoryName}`);
