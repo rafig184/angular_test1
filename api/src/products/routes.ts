@@ -3,6 +3,8 @@ import express, { NextFunction, Request, Response } from "express"
 import zod from "zod"
 import { getAllProducts } from "./handlers/getAllProducts"
 import { addProduct } from "./handlers/addProduct"
+import { deleteProduct } from "./handlers/deleteProduct"
+import { editProduct } from "./handlers/updateProduct"
 
 
 
@@ -23,13 +25,11 @@ export const newProductSchema = zod.object({
     price: zod.number(),
     categoryName: zod.string(),
 })
-console.log(`####################3##${newProductSchema}`);
+
 
 function middlewareNewProduct(req: Request, res: Response, next: NextFunction) {
     try {
         newProductSchema.parse(req.body)
-
-
         return next()
     } catch (error) {
         console.log(error)
@@ -46,6 +46,31 @@ productsRouter.post("/new-product", middlewareNewProduct, async function (req: R
     } catch (error) {
         console.log(error)
         return next(error)
+    }
+})
+
+productsRouter.delete("/delete-product/:productId", async function (req: Request, res: Response, next: NextFunction) {
+    const { productId } = req.params;
+    try {
+        const results = await deleteProduct(parseInt(productId));
+        res.json({ message: "Product removed successfully", results });
+    } catch (error) {
+        console.error(error);
+        return next(error);
+    }
+})
+
+productsRouter.put("/edit-product", middlewareNewProduct, async function (req: Request, res: Response, next: NextFunction) {
+
+    // const vacationId: any = req.query.q;
+
+
+    try {
+        const results = await editProduct(req.body);
+        res.json(results);
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({ message: "Error updating product" });
     }
 })
 

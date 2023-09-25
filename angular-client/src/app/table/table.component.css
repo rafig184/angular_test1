@@ -1,3 +1,40 @@
+.form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 2%;
+
+}
+
+.insideForm {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    /* align-items: center; */
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 2%;
+}
+
+.inlineDiv {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 2%;
+}
+
+.btn {
+    text-align: center;
+    margin-top: 2%;
+}
+
+.h1 {
+    text-align: center;
+}
+
 .table {
     border: 1px black solid;
     text-align: center;

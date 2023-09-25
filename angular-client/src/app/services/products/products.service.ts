@@ -16,11 +16,21 @@ export class ProductsService {
     return axios.get(this.url + "/products")
   }
 
-  async addProduct(product: object) {
+  addProduct(product: object) {
     console.log(product);
+    return axios.post(this.url + "/products/new-product", product, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+  }
 
+  deleteProduct(productId: number): Promise<any> {
+    return axios.delete(`${this.url}/products/delete-product/${productId}`)
+  }
 
-    const result = await axios.post(`${this.url}/products/new-product`, product);
+  editProduct(product: any) {
+    return axios.put(`${this.url}/products/edit-product`, product)
   }
 
 }

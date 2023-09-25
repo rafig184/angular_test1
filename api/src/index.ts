@@ -8,6 +8,8 @@ app.use(cors())
 
 const port = 4100
 
+app.use(express.json());
+
 app.get("/health-check", function (req, res, next) {
     res.send(`API IS OK ${new Date().toISOString()}`)
 })

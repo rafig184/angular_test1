@@ -11,7 +11,8 @@
         <div class="inlineDiv">
             <label>Category :</label>
             <select [(ngModel)]="selectedCategory" placeholder="Search for a product">
-                <option *ngFor="let category of categories">{{category.categoryName}}</option>
+                <option *ngFor="let category of categories">
+                    {{category.categoryName}}</option>
             </select>
         </div>
         <div class="btn">
@@ -24,6 +25,7 @@
     <thead class="thead">
         <tr class="tr">
             <th class="th" *ngFor="let header of tableHeaders">{{header}}</th>
+            <th class="th">Delete</th>
         </tr>
     </thead>
     <tbody class="tbody">
@@ -32,6 +34,8 @@
             <td class="td">{{ product.productName }}</td>
             <td class="td">{{ product.price }}</td>
             <td class="td">{{ product.categoryName }}</td>
+            <td class="td"><button (click)="productToDelete(product.idproducts)">Delete</button></td>
+
         </tr>
 
     </tbody>
